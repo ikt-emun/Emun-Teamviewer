@@ -14,10 +14,10 @@ $archivoLog = Join-Path -Path $directorioLogs -ChildPath "ProtonVPN_Install_Log.
 
 # Instala la aplicación y captura el log
 try {
-    winget install -h $nombrePaquete | Tee-Object -FilePath $archivoLog
+    winget install $nombrePaquete --accept-source-agreements | Tee-Object -FilePath $archivoLog
     "Instalación completada." | Out-File -FilePath $archivoLog -Append
 } catch {
-    "Error: $_" | Out-File -FilePath $archivoLog -Append
+    "Error al ejecutar el script: $_" | Out-File -FilePath $archivoLog -Append
 }
 
 # Muestra el contenido del log en la consola
